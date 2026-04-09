@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公司內部點餐工具</title>
+    <link rel="stylesheet" href="all.css">
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <!-- Google API Client -->
+    <script src="https://apis.google.com/js/api.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>🍱 公司點餐系統</h1>
+            <div id="user-info" class="hidden">
+                <span id="user-name"></span>
+                <button id="sign-out-btn" class="btn btn-outline">登出</button>
+            </div>
+        </header>
+        <!-- 登入區塊 -->
+        <section id="login-section">
+            <div class="card login-card">
+                <h2>請先登入</h2>
+                <p>使用公司 Google 帳號登入以進行點餐</p>
+                <button id="custom-login-btn" class="custom-google-btn">
+                    <span class="icon"></span>
+                    <span class="text">使用 Google 帳號登入</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- 載入中 / 狀態提示 -->
+        <section id="status-section" class="hidden">
+            <div class="loader"></div>
+            <p id="status-text">載入中...</p>
+        </section>
+
+        <!-- 主應用程式區塊 (需登入且有權限) -->
+        <main id="app-section" class="hidden">
+
+            <!-- 管理員設定區塊 (僅管理員可見) -->
+            <section id="admin-section" class="card hidden">
+                <h3>👑 管理員設定</h3>
+                <div class="admin-controls">
+                    <button id="btn-open-config" class="btn btn-secondary">設定今日餐廳</button>
+                    <button id="btn-clear-orders" class="btn btn-danger">清空今日點餐</button>
+                </div>
+                <div id="admin-config-panel" class="hidden mt-3">
+                    <h4>選擇今日開放餐廳：</h4>
+                    <div id="restaurant-checkboxes" class="checkbox-group">
+                        <!-- JS 動態生成 -->
+                    </div>
+                    <button id="btn-save-config" class="btn btn-primary mt-2">儲存設定</button>
+                </div>
+            </section>
+
+            <!-- 今日菜單區塊 -->
+            <section id="menu-section">
+                <h2>📅 今日菜單 <span id="today-restaurants"></span></h2>
+                <div id="menu-container" class="grid-container">
+                    <!-- JS 動態生成餐點卡片 -->
+                    <p class="placeholder-text">今日尚未設定餐廳或菜單載入中...</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- 訂單確認浮動視窗 / 底部區塊 -->
+        <section id="order-summary-section" class="hidden">
+            <!-- 用於顯示簡易結算或複製按鈕，可視需求擴充 -->
+            <button id="btn-show-orders" class="btn btn-info">查看今日訂單總覽</button>
+        </section>
+
+    </div>
+
+    <!-- 訂單列表 Modal -->
+    <div id="orders-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>📋 今日訂單列表</h2>
+            <div class="table-wrapper">
+                <table id="orders-table">
+                    <thead>
+                        <tr>
+                            <th>時間</th>
+                            <th>訂購人</th>
+                            <th>餐廳</th>
+                            <th>餐點</th>
+                            <th>金額</th>
+                            <th>備註</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orders-list">
+                        <!-- JS 動態生成 -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <p>總金額: <span id="total-amount">0</span> 元</p>
+                <button id="btn-copy-orders" class="btn btn-success">複製訂單文字 (Line)</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="all.js"></script>
+</body>
+
+</html>
