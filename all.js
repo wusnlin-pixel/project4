@@ -13,8 +13,7 @@ const CONFIG = {
     // 請填入您的 GCP Client ID
     CLIENT_ID: '768071495555-eltu7kj8of1qr6psqpqia3o4f6rpsj4j.apps.googleusercontent.com',
     // 請填入您的 GCP API Key
-    API_KEY: 'AIzaSyBt5RhmXt9TdfSMJxR-R3NI4ChqBmpqzAM
-',
+    API_KEY: 'AIzaSyBt5RhmXt9TdfSMJxR-R3NI4ChqBmpqzAM',
     // 請填入您的 Google Sheet ID
     SPREADSHEET_ID: '13NpYfhHM7LDV_vBUrp072u7y_cjmcRbtqAAJGuh-CwI',
 
